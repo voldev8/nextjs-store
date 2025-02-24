@@ -23,11 +23,12 @@ export const paypal = {
         ],
       }),
     });
+
     return handleResponse(response);
   },
   capturePayment: async function capturePayment(orderId: string) {
     const accessToken = await generateAccessToken();
-    const url = `${base}/v2/checkout/order/${orderId}/capture`;
+    const url = `${base}/v2/checkout/orders/${orderId}/capture`;
 
     const response = await fetch(url, {
       method: "POST",
